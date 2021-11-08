@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import Item from './Item';
 import '../css/Motherboard.css';
 import { getProducts } from '../action';
-import { connect } from 'react-redux';
-
+import { connect ,useDispatch,useSelector} from 'react-redux';
+import { graphicAction } from '../action';
 const Motherboard = (props) => {
 
     useEffect(() => {
         props.getProducts('Graphics');
     }, []);
-
+    const dispatch=useDispatch();
+    useEffect(()=>{dispatch(graphicAction())},[]);
     const renderList = props.prodList.map(({ id, img, price, title }) => {
         return <Item id={id} title={title} src={img} price={price} />;
     })

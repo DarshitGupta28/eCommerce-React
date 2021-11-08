@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-
+//import {tabReducer} from './tabReducer';
 const ItemReducer = (state, action) => {
     if (state === undefined) {
         let arr = new Array(100);
@@ -32,6 +32,7 @@ const ItemReducer = (state, action) => {
 
 const prodListReducer = (state = [], action) => {
     if (action.type === 'FETCH_PRODUCTS') {
+        console.log(action.payload)
         return action.payload;
     }
 
@@ -57,10 +58,49 @@ const cartReducer = (state = [], action) => {
     }
 }
 
+const tabReducer=(state = 'Home', action) =>{
+    // console.log("Reducer called");
+    // console.log(action.type);
+    switch (action.type) {
+      case 'Motherboard': {
+        return 'Motherboard';
+      }
+      case 'Graphic':{
+          return 'Graphic';
+      }
+      case 'Memory':{
+          return 'Memory';
+      }
+      case 'Processor':{
+          return 'Processor';
 
+      }
+      case 'Home': {
+        return 'Home';
+      }
+      default :
+      {
+          return state;
+      }
+    }
+}
+const tokenReducer=(state='',action)=>{
+
+    switch(action.type){
+        case ("token"):
+            return action.payload
+        default:
+            return state;
+
+    }
+
+}
+  
 export default combineReducers({
     items: ItemReducer,
     prodList: prodListReducer,
     cartItems: cartReducer,
+    tab:tabReducer,
+    token:tokenReducer,
     // itemById: fetchByIdReducer
 });

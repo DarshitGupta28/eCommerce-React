@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import '../css/Cart.css';
 import { getCartItems } from '../action';
 import CartItem from '../Components/CartItem';
-
+import { useSelector } from 'react-redux';
 
 const Cart = (props) => {
-
+    const token=useSelector(state=>state.token);
     useEffect(() => {
-        props.getCartItems();
-    }, []);
+        props.getCartItems(token);
+    }, [token]);
 
     const renderList = props.cartItems.map(obj => {
-        return <CartItem obj={obj} />
+        return <CartItem obj={obj} key={Math.random()*1000}/>
     })
     return (
         <div className="CartItems">

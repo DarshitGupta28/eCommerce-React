@@ -12,7 +12,7 @@ const SignIn = () => {
 
     const formSubmit = async (event) => {
         event.preventDefault();
-
+        console.log('form submit')
         const response = await axios.post("http://localhost:5000/add-user", {}, {
             headers: {
                 dbType: 'User',
@@ -25,33 +25,33 @@ const SignIn = () => {
 
     return (
         <div className="mainContainer">
-            <form class="ui form">
-                <div class="field">
+            <form className="ui form">
+                <div className="field">
                     <label>Name</label>
-                    <div class="two fields">
-                        <div class="field">
+                    <div className="two fields">
+                        <div className="field">
                             <input type="text" value={firstname} onChange={e => setFirstName(e.target.value)} placeholder="First Name" />
                         </div>
-                        <div class="field">
+                        <div className="field">
                             <input type="text" value={lastname} onChange={e => setLastName(e.target.value)} placeholder="Last Name" />
                         </div>
                     </div>
                 </div>
-                <div class="field">
+                <div className="field">
                     <label>Email ID</label>
                     <input type="text" value={email} placeholder="john@gmail.com" onChange={e => setEmail(e.target.value)} />
                 </div>
-                <div class="field">
+                <div className="field">
                     <label>Password</label>
                     <input type="password" value={pass} placeholder="Enter Password" onChange={e => setPass(e.target.value)} />
                 </div>
-                <div class="field">
-                    <div class="ui checkbox">
-                        <input type="checkbox" tabindex="0" class="hidden" />
+                <div className="field">
+                    <div className="ui checkbox">
+                        <input type="checkbox" tabindex="0" className="hidden" />
                         <label>I agree to the Terms and Conditions</label>
                     </div>
                 </div>
-                <button class="ui button" type="submit" onClick={formSubmit}>Submit</button>
+                <button className="ui button" type="submit" onClick={formSubmit}>Submit</button>
             </form>
         </div>
     );

@@ -4,15 +4,17 @@ import { connect } from 'react-redux';
 import '../css/Item.css';
 import AddSubItem from './AddSubItem.js';
 import { makeZero, addItemToCart, getCartItems } from '../action';
+import { useSelector } from 'react-redux';
 
 const Item = (props) => {
-
+    const token=useSelector(state=>state.token);
     const addToCart = async (id) => {
+        console.log(token);
         await props.makeZero(id);
-        await props.addItemToCart(id, props.items[id]);
-        await props.getCartItems();
+        await props.addItemToCart(id, props.items[id],token);
+        await props.getCartItems(token);
     }
-
+    
     // console.log(props.cartItems);
 
     return (
@@ -31,7 +33,8 @@ const Item = (props) => {
             </div>
             <div className="CartAndBuy">
                 <div className="ui buttons">
-                    <button className="ui button" onClick={() => addToCart(props.id)}>Add to Cart</button>
+
+                {token==''?"":<button className="ui button" onClick={() => addToCart(props.id)}>Add to Cart</button>}
                     <div className="or"></div>
                     <button className="ui positive button">Buy Now</button>
                 </div>

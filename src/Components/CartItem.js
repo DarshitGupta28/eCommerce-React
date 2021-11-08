@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector,connect } from 'react-redux';
 
 import '../css/CartItem.css';
 import { removeFromCart } from '../action';
 
 const CartItem = (props) => {
-
+    const token=useSelector(state=>state.token);
     const remove = () => {
-        props.removeFromCart(props.obj.id);
+        props.removeFromCart(props.obj.id,token);
         console.log('clicked');
     }
 
@@ -15,7 +15,7 @@ const CartItem = (props) => {
     return (
         <div className="cartItem">
             <div onClick={remove}>
-                <i class="window close icon" ></i>
+                <i className="window close icon" ></i>
             </div>
             <div className="itemImage">
                 <img src={props.obj.img} />

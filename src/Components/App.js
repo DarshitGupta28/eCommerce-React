@@ -10,11 +10,14 @@ import Home from './Home';
 import Cart from './Cart';
 import AddProduct from './AddProduct';
 import SignIn from './SignIn';
+import LogIn from "./LogIn.js";
 import Footer from './Footer';
 
 import '../css/App.css';
+//import LogIn from "./LogIn.js";
 
 const App = () => {
+    
     return (<div>
         <BrowserRouter>
             <Navbar />
@@ -28,6 +31,7 @@ const App = () => {
                 <Route path="/cart" exact component={Cart} />
                 <Route path="/add" exact component={AddProduct} />
                 <Route path="/sign-in" exact component={SignIn} />
+                <Route path="/log-in" exact component={LogIn} />
             </div>
             <Footer />
         </BrowserRouter>
